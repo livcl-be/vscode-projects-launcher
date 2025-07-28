@@ -5,23 +5,41 @@ pkgdesc="A GTK Python launcher for your VS Code projects using TOML"
 arch=('any')
 url="https://github.com/livcl-be/vscode-projects-launcher"
 license=('GPL-3')
-depends=('python' 'python-gobject' 'python-toml' 'gtk4')
+depends=('gtk4')
 source=("${pkgname}.desktop"
+        "requirements.txt"
         "icon.png"
-        "src/")
-md5sums=('SKIP' 'SKIP' 'SKIP')
+        "main.py"
+        "projects.toml")
+md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+
+build() {
+  cd "$srcdir"
+
+  # Create a virtual environment just for build
+  python -m venv venv
+  source venv/bin/activate
+
+  # Install dependencies locally with pip
+  pip install --upgrade pip
+  pip install -r requirements.txt
+
+  # Build the app using PyInstaller
+  pyinstaller --noconfirm --onefile --name vscode-projects-launcher main.py
+
+  deactivate
+}
 
 package() {
-  install -d "$pkgdir/usr/share/applications"
-  install -Dm644 "$srcdir/${pkgname}.desktop" "$pkgdir/usr/share/applications/${pkgname}.desktop"
+  install -Dm755 "$srcdir/dist/vscode-projects-launcher" \
+    "$pkgdir/usr/bin/vscode-projects-launcher"
 
-  install -d "$pkgdir/usr/share/icons/hicolor/scalable/apps"
-  install -Dm644 "$srcdir/icon.png" "$pkgdir/usr/share/icons/hicolor/scalable/apps/${pkgname}.png"
+  install -Dm755 "$srcdir/projects.toml" \
+    "$pkgdir/usr/bin/projects.toml"
 
-  install -d "$pkgdir/usr/bin"
-  echo -e "#!/bin/sh\npython /usr/share/${pkgname}/main.py" > "$pkgdir/usr/bin/${pkgname}"
-  chmod +x "$pkgdir/usr/bin/${pkgname}"
+  install -Dm644 "$srcdir/vscode-projects-launcher.desktop" \
+    "$pkgdir/usr/share/applications/vscode-projects-launcher.desktop"
 
-  install -d "$pkgdir/usr/share/${pkgname}"
-  cp -r "$srcdir/src/vscode_projects_launcher" "$pkgdir/usr/share/${pkgname}/"
+  install -Dm644 "$srcdir/icon.png" \
+    "$pkgdir/usr/share/icons/hicolor/256x256/apps/vscode-projects-launcher.png"
 }
