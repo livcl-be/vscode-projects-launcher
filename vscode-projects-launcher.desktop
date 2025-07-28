@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=VS Code Projects Launcher
+Comment=Launch VS Code projects with profiles
+Exec=vscode-projects-launcher
+Icon=vscode-projects-launcher
+Terminal=false
+Type=Application
+Categories=Development;Utility;
