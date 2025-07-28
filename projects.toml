@@ -1,19 +1,29 @@
 [[projects]]
-name = "CAST (= Component Assembly Storage Tracker )"
-location = "/home/flippedlama/shared/src/CAST"
-profile = "webdev"
+name = "Project 1"
+location = "/home/user/src/cast"
+profile = "CAST"
 
 [[projects]]
-name = "Bloesems in September"
-location = "/home/flippedlama/shared/src/bloesems-in-september"
-profile = "webdev"
-
-[[projects]]
-name = "Raycaster in Zig"
-location = "/home/flippedlama/shared/src/raycaster-in-zig"
+name = "Project 2"
+location = "/home/user/src/side"
 profile = "Default"
 
 [[projects]]
-name = "Draai OS"
-location = "/home/flippedlama/shared/src/draaios"
-profile = "DraaiOS"
+name = "Project 3"
+location = "/home/user/src/cast"
+profile = "Webdev"
+
+[[projects]]
+name = "Project 4"
+location = "/home/user/src/side"
+profile = "Platformio"
+
+[[projects]]
+name = "Project 5"
+location = "/home/user/src/cast"
+profile = "cpp"
+
+[[projects]]
+name = "Project 6"
+location = "/home/user/src/side"
+profile = "Default"

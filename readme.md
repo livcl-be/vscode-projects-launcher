@@ -17,22 +17,6 @@ A minimal GTK4 Python application that lets you manage and launch your VS Code p
 - Optional `.desktop` integration and launcher icon
 
 
-
-## 🛠 Requirements
-
-- Python ≥ 3.10
-- [GTK 4](https://docs.gtk.org/gtk4/) & PyGObject
-- `code` (VS Code CLI must be in PATH)
-
-Install dependencies on Arch:
-
-```bash
-sudo pacman -S gtk4 python-gobject
-pip install toml
-````
-
-
-
 ## 📁 TOML Configuration
 
 Create a `projects.toml` file in the working directory like this:
@@ -50,34 +34,6 @@ profile = "Default"
 ```
 
 
-
-## 🚀 Running
-
-```bash
-python src/vscode_projects_launcher/main.py
-```
-
-or if you’ve installed it:
-
-```bash
-vscode-projects-launcher
-```
-
-
-
-## 🖥️ Desktop Launcher (optional)
-
-If you install via AUR or manually place the `.desktop` file and icon:
-
-```bash
-cp vscode-projects-launcher.desktop ~/.local/share/applications/
-cp icon.png ~/.local/share/icons/hicolor/256x256/apps/vscode-projects-launcher.png
-```
-
-Then launch it from GNOME/KDE menu!
-
-
-
 ## 📦 AUR Packaging
 
 To install from source:
@@ -85,8 +41,6 @@ To install from source:
 ```bash
 makepkg -si
 ```
-
-To publish to AUR, see [Arch Wiki - AUR submission](https://wiki.archlinux.org/title/Arch_User_Repository#Submitting_packages).
 
 
 
